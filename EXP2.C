@@ -48,15 +48,10 @@ CREATE TABLE FactSales (
     DateKey INT,
     ProductKey INT,
     CustomerKey INT,
-    StoreKey INT,
-    FOREIGN KEY (DateKey) REFERENCES DimDate(DateKey),
-    FOREIGN KEY (ProductKey) REFERENCES DimProduct(ProductKey),
-    FOREIGN KEY (CustomerKey) REFERENCES DimCustomer(CustomerKey),
-    FOREIGN KEY (StoreKey) REFERENCES DimStore(StoreKey)
+    StoreKey INT
 );
 
 -- Dimension Tables
-
 CREATE TABLE DimDate (
     DateKey INT PRIMARY KEY,
     FullDate DATE,
@@ -79,10 +74,8 @@ CREATE TABLE DimCustomer (
 );
 
 CREATE TABLE DimContact (
-    CustomerKey INT,
-    Number BIGINT,
-    PRIMARY KEY (CustomerKey),
-    FOREIGN KEY (CustomerKey) REFERENCES DimCustomer(CustomerKey)
+    CustomerKey INT PRIMARY KEY,
+    Number BIGINT
 );
 
 CREATE TABLE DimStore (
@@ -93,8 +86,6 @@ CREATE TABLE DimStore (
 );
 
 CREATE TABLE DimSupplier (
-    StoreKey INT,
-    SupplierType VARCHAR(50),
-    PRIMARY KEY (StoreKey),
-    FOREIGN KEY (StoreKey) REFERENCES DimStore(StoreKey)
+    StoreKey INT PRIMARY KEY,
+    SupplierType VARCHAR(50)
 );
